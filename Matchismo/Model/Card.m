@@ -10,8 +10,7 @@
 
 @implementation Card
 
-- (int) match:(NSArray *)otherCards
-{
+- (int) match:(NSArray *)otherCards {
     int score = 0;
     
     for (Card *card in otherCards) {
@@ -23,8 +22,7 @@
     return score;
 }
 
-- (NSString *) description
-{
+- (NSString *) description {
     return self.contents;
 }
 
