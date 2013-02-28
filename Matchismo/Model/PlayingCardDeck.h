@@ -6,7 +6,6 @@
 //  Copyright (c) 2013 Mike Berlin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Deck.h"
 
 @interface PlayingCardDeck : Deck

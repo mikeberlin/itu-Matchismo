@@ -6,12 +6,10 @@
 //  Copyright (c) 2013 Mike Berlin. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import "Card.h"
 
 @interface PlayingCard : Card
 
-@property (strong, nonatomic) NSString *contents;
 @property (strong, nonatomic) NSString *suit;
 @property (nonatomic) NSUInteger rank;
 
