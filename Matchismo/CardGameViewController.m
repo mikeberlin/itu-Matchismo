@@ -24,9 +24,6 @@
 
 @implementation CardGameViewController
 
-- (IBAction)dealButton:(id)sender {
-}
-
 - (CardMatchingGame *)game {
     if (_game == nil) _game = [[CardMatchingGame alloc] initWidthCardCount:self.cardButtons.count
                                                                  usingDeck:[[PlayingCardDeck alloc] init]];
@@ -41,10 +38,12 @@
 - (void)updateUI {
     for (UIButton *cardButton in self.cardButtons) {
         Card *card = [self.game cardAtIndex:[self.cardButtons indexOfObject:cardButton]];
+        UIImage *bgImage = (card.isFaceUp) ? nil : [UIImage imageNamed:@"bicycleback01.jpg"];
 
         [cardButton setTitle:card.contents forState:UIControlStateSelected];
         [cardButton setTitle:card.contents forState:UIControlStateSelected|UIControlStateDisabled];
-        
+        [cardButton setImage:bgImage forState:UIControlStateNormal];
+
         cardButton.selected = card.isFaceUp;
         cardButton.enabled = !card.isUnplayable;
         cardButton.alpha = card.isUnplayable ? 0.3 : 1.0;

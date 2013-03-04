@@ -7,6 +7,7 @@
 //
 
 #import "CardMatchingGame.h"
+#import "PlayingCard.h"
 
 @interface CardMatchingGame()
 
@@ -63,36 +64,75 @@
 
 - (void)flipCardAtIndex:(NSUInteger)index {
     Card *card = [self cardAtIndex:index];
+    Card *secondCard = nil;
+    NSArray *cardsToMatch = nil;
 
-    // TODO: Make this work for three cards...
-    if (self.threeGameMode)
-    {
-    }
-    
     if (!card.isUnplayable) {
         if (!card.isFaceUp) {
             [self.flipHistory addObject:[NSString stringWithFormat:@"Flipped up %@", card.contents]];
+            
+            for (Card *nextCardToMatch in self.cards) {
+                if (nextCardToMatch.isFaceUp && !nextCardToMatch.isUnplayable) {
 
-            for (Card *otherCard in self.cards) {
-                if (otherCard.isFaceUp && !otherCard.isUnplayable) {
-                    int matchScore = [card match:@[otherCard]];
-                    if (matchScore) {
-                        otherCard.unplayable = YES;
-                        card.unplayable = YES;
-                        self.score += matchScore * MATCH_BONUS;
-                        [self.flipHistory addObject:[NSString stringWithFormat:@"Matched %@ and %@ for %d points!", card.contents, otherCard.contents, matchScore * MATCH_BONUS]];
-                    } else {
-                        otherCard.faceUp = NO;
-                        self.score -= MISMATCH_PENALTY;
-                        [self.flipHistory addObject:[NSString stringWithFormat:@"%@ and %@ don't match!", card.contents, otherCard.contents]];
+                    if (!self.threeGameMode) {
+                        cardsToMatch = @[nextCardToMatch];
                     }
-                    break;
+                    else if (!secondCard) {
+                        secondCard = nextCardToMatch;
+                        continue;
+                    }
+                    else {
+                        cardsToMatch = @[secondCard, nextCardToMatch];
+                    }
+
+                    if (cardsToMatch) {
+                        int matchScore = [card match:cardsToMatch];
+                        NSArray *cardsInPlay = [@[card] arrayByAddingObjectsFromArray:cardsToMatch];
+
+                        if (matchScore) {
+                            for (PlayingCard *cardToMark in cardsInPlay) {
+                                cardToMark.unplayable = YES;
+                            }
+
+                            self.score += matchScore * MATCH_BONUS;
+                            [self addMoveToFlipHistory:cardsInPlay withDisplayText:@"Matched %@for %d points!" withScore:matchScore * MATCH_BONUS];
+                        } else {
+                            for (PlayingCard *cardToMark in cardsToMatch) {
+                                cardToMark.faceUp = NO;
+                            }
+
+                            self.score -= MISMATCH_PENALTY;
+                            [self addMoveToFlipHistory:cardsInPlay withDisplayText:@"%@ don't match!" withScore:0];
+                        }
+
+                        break;
+                    }
                 }
             }
+
             self.score -= FLIP_COST;
         }
+
         card.faceUp = !card.isFaceUp;
     }
+}
+
+- (void)addMoveToFlipHistory:(NSArray *)cardsToDisplay
+             withDisplayText:(NSString *)displayText
+                   withScore:(int)matchScore {
+
+    NSMutableString *cardOutput = [[NSMutableString alloc] init];
+
+    for (int i=0; i < [cardsToDisplay count]; i++) {
+        if (i == 0) {
+            [cardOutput appendFormat:@"%@", ((PlayingCard *)[cardsToDisplay objectAtIndex:i]).contents];
+        }
+        else {
+            [cardOutput appendFormat:@"and %@", ((PlayingCard *)[cardsToDisplay objectAtIndex:i]).contents];
+        }
+    }
+
+    [self.flipHistory addObject:[NSString stringWithFormat:displayText, cardOutput, matchScore]];
 }
 
 @end

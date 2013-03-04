@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8ABB356B16E4411500079041 /* bicycleback01.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 8ABB356A16E4411500079041 /* bicycleback01.jpg */; };
 		8ADA506416DB336A00E8B56A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADA506316DB336A00E8B56A /* UIKit.framework */; };
 		8ADA506616DB336A00E8B56A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADA506516DB336A00E8B56A /* Foundation.framework */; };
 		8ADA506816DB336A00E8B56A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8ADA506716DB336A00E8B56A /* CoreGraphics.framework */; };
@@ -26,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8ABB356A16E4411500079041 /* bicycleback01.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bicycleback01.jpg; sourceTree = "<group>"; };
 		8ADA506016DB336A00E8B56A /* Matchismo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Matchismo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ADA506316DB336A00E8B56A /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		8ADA506516DB336A00E8B56A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -110,6 +112,7 @@
 		8ADA506A16DB336A00E8B56A /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				8ABB356A16E4411500079041 /* bicycleback01.jpg */,
 				8ADA507216DB336A00E8B56A /* CardGameAppDelegate.h */,
 				8ADA507316DB336A00E8B56A /* CardGameAppDelegate.m */,
 				8ADA506B16DB336A00E8B56A /* Matchismo-Info.plist */,
@@ -197,6 +200,7 @@
 				8ADA507816DB336A00E8B56A /* Default@2x.png in Resources */,
 				8ADA507A16DB336A00E8B56A /* Default-568h@2x.png in Resources */,
 				8ADA507D16DB336A00E8B56A /* MainStoryboard.storyboard in Resources */,
+				8ABB356B16E4411500079041 /* bicycleback01.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -252,6 +256,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -267,6 +272,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -283,6 +290,7 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -291,6 +299,8 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 6.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;
 			};
